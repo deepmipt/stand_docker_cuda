@@ -10,6 +10,7 @@ RUN apt-get update && \
     add-apt-repository -y ppa:jonathonf/python-3.6 && \
     add-apt-repository -y ppa:ubuntu-toolchain-r/test && \
     apt-get update && \
+    apt-get -y install locales && locale-gen en_US.UTF-8 && locale-gen ru_RU.UTF-8 && \
     apt-get -y install wget && \
     apt-get -y install gcc-6 g++-6 && \
     apt-get -y install build-essential python3.6-dev libssl-dev zlib1g-dev libncurses5-dev libreadline-dev libgdbm-dev libdb5.3-dev libbz2-dev liblzma-dev libsqlite3-dev libffi-dev tcl-dev tk tk-dev && \
@@ -17,6 +18,8 @@ RUN apt-get update && \
 
 RUN wget https://bootstrap.pypa.io/get-pip.py && \
     python3.6 get-pip.py
+
+ENV LANG='en_US.UTF-8' LANGUAGE='en_US.UTF-8' LC_ALL='en_US.UTF-8'
 
 
 # Install cuDNN
